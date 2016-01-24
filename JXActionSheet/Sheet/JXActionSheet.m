@@ -11,6 +11,7 @@
 const CGFloat KJX_MinButtonHeight = 50.;
 const CGFloat KJX_Edges = 15.;
 const CGFloat KJX_sectionHeight = 8.;
+const CGFloat KJX_backgroundViewAlpha = 0.4;
 NSString *const KJX_ItemIdentifier = @"KJX.Wang_Item";
 
 //***************************** JXSheetModel ***********************************//
@@ -198,7 +199,7 @@ NSString *const KJX_ItemIdentifier = @"KJX.Wang_Item";
         CGRect frame = _tableView.frame;
         frame.origin.y = CGRectGetHeight(wSelf.bounds) - frame.size.height;
         wSelf.tableView.frame = frame;
-        wSelf.backgroundView.alpha = 0.5;
+        wSelf.backgroundView.alpha = KJX_backgroundViewAlpha;
     }];
 }
 
@@ -333,7 +334,7 @@ NSString *const KJX_ItemIdentifier = @"KJX.Wang_Item";
         index = _titleModel ? indexPath.row - 1 : indexPath.row;
     }
     if (_completionHanlde) {
-        self.completionHanlde(index, indexPath.section == 1 ? YES : NO);
+        self.completionHanlde(index, (indexPath.section == 1));
     }
     [self dismissViewAnimation];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
